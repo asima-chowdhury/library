@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { Navbar, Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './App.css';
+import AddBook from './components/AddBook';
+import BookList from './components/BookList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar bg="dark" variant="dark" className='header'>
+        <Container>
+          <Navbar.Brand href="#home">Library</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Container>
+        <Row>
+          <Col>
+            <AddBook />
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            <BookList />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
