@@ -1,4 +1,4 @@
-import { Navbar, Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Navbar, Container, Row, Col } from 'react-bootstrap';
 import './App.css';
 import AddBook from './components/AddBook';
 import BookList from './components/BookList';
@@ -11,7 +11,7 @@ function App() {
           <Navbar.Brand href="#home">Library</Navbar.Brand>
         </Container>
       </Navbar>
-      <Container>
+      <Container style={{ width: "400px" }}>
         <Row>
           <Col>
             <AddBook />
