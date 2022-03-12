@@ -1,10 +1,12 @@
-import {db} from '../firebase.config'
+import { db } from '../firebase.config'
 
-import { collection, getDocs, getDoc, addDoc, updateDoc , deleteDoc} from 'firebase/firestore';
+import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 
-class BookDataService {
-    
-}
 const bookCollectionRef = collection(db, "books");
+class BookDataService {
+    addBooks = (newBook) => {
+        return addDoc(bookCollectionRef, newBook);
+    }
+}
 
 export default new BookDataService();
