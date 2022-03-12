@@ -7,7 +7,7 @@ const AddBook = () => {
     return (
         <>
             <Form>
-                <Form.Group className="mb-3" controlId="formBookTitle">
+                <Form.Group className="my-3" controlId="formBookTitle">
                     <InputGroup>
                         <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
                         <Form.Control
@@ -26,6 +26,7 @@ const AddBook = () => {
                         />
                     </InputGroup>
                 </Form.Group>
+
                 <ButtonGroup aria-label="Basic example" className="mb-3">
                     <Button
                         disabled={flag}
@@ -48,6 +49,7 @@ const AddBook = () => {
                         Not Available
                     </Button>
                 </ButtonGroup>
+
                 <div className="d-grid gap-2">
                     <Button variant="primary" type="Submit">
                         Add/ Update
