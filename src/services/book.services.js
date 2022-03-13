@@ -15,7 +15,7 @@ class BookDataService {
 
     deleteBook = (id) => {
         const bookDoc = doc(id, "books", id);
-        return deleteBook(bookDoc);
+        return deleteDoc(bookDoc);
     };
 
     getAllBooks = () => {
