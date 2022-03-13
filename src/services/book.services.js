@@ -6,7 +6,27 @@ const bookCollectionRef = collection(db, "books");
 class BookDataService {
     addBooks = (newBook) => {
         return addDoc(bookCollectionRef, newBook);
+    };
+
+    updateBook = (id, updatedBook) => {
+        const bookDoc = doc(id, "books", id);
+        return updateDoc(bookDoc, updatedBook);
+    };
+
+    deleteBook = (id) => {
+        const bookDoc = doc(id, "books", id);
+        return deleteBook(bookDoc);
+    };
+
+    getAllBooks = () => {
+        return getDocs(bookCollectionRef);
+    };
+
+    getBook = (id) => {
+        const bookDoc = doc(id, "books", id);
+        return getDoc(bookDoc);
     }
+
 }
 
 export default new BookDataService();
