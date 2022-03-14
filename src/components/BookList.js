@@ -17,11 +17,15 @@ const BookList = () => {
         setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
 
+    const deleteHandler = async(id) => {
+        await BookDataService.deleteBook(id);
+        getBooks();
+    }
     return (
         <>
-            <pre>{JSON.stringify(books, undefined, 2)}</pre>
+            {/* <pre>{JSON.stringify(books, undefined, 2)}</pre> */}
             <div className="my-2">
-                <Button variant="dark edit">
+                <Button variant="dark edit" onClick={getBooks}>
                     Refresh List
                 </Button>
             </div>
@@ -40,7 +44,7 @@ const BookList = () => {
                         books.map((doc, index) => {
                             return (
                                 <tr>
-                                    <td>{index+1}</td>
+                                    <td>{index + 1}</td>
                                     <td>{doc.title}</td>
                                     <td>{doc.author}</td>
                                     <td>{doc.status}</td>
@@ -48,14 +52,14 @@ const BookList = () => {
                                         <Button
                                             variant='secondary'
                                             className='edit'
-
+                                            // onClick={(e) => getBookId(doc.id)}
                                         >
                                             Edit
                                         </Button>
                                         <Button
                                             variant='danger'
                                             className='delete'
-
+                                            onClick={(e) => deleteHandler(doc.id)}
                                         >
                                             Delete
                                         </Button>
