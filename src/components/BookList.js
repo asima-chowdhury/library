@@ -17,7 +17,7 @@ const BookList = () => {
         setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
 
-    const deleteHandler = async(id) => {
+    const deleteHandler = async (id) => {
         await BookDataService.deleteBook(id);
         getBooks();
     }
@@ -52,7 +52,7 @@ const BookList = () => {
                                         <Button
                                             variant='secondary'
                                             className='edit'
-                                            // onClick={(e) => getBookId(doc.id)}
+                                        // onClick={(e) => getBookId(doc.id)}
                                         >
                                             Edit
                                         </Button>

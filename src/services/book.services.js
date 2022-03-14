@@ -9,12 +9,12 @@ class BookDataService {
     };
 
     updateBook = (id, updatedBook) => {
-        const bookDoc = doc(id, "books", id);
+        const bookDoc = doc(db, "books", id);
         return updateDoc(bookDoc, updatedBook);
     };
 
     deleteBook = (id) => {
-        const bookDoc = doc(id, "books", id);
+        const bookDoc = doc(db, "books", id);
         return deleteDoc(bookDoc);
     };
 
