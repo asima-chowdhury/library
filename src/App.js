@@ -22,14 +22,14 @@ function App() {
       <Container style={{ width: "400px" }}>
         <Row>
           <Col>
-            <AddBook />
+            <AddBook id={bookId} setBookId={setBookId} />
           </Col>
         </Row>
       </Container>
       <Container>
         <Row>
           <Col>
-            <BookList getBookId={getBookIdHandler}/>
+            <BookList getBookId={getBookIdHandler} />
           </Col>
         </Row>
       </Container>

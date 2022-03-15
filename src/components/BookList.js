@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import BookDataService from '../services/book.services';
 
-const BookList = ({getBookId}) => {
+const BookList = ({ getBookId }) => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
@@ -52,7 +52,7 @@ const BookList = ({getBookId}) => {
                                         <Button
                                             variant='secondary'
                                             className='edit'
-                                        onClick={(e) => getBookId(doc.id)}
+                                            onClick={(e) => getBookId(doc.id)}
                                         >
                                             Edit
                                         </Button>

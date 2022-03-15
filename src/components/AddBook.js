@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, ButtonGroup, Form, InputGroup } from 'react-bootstrap';
 import BookDataService from '../services/book.services';
 
-const AddBook = () => {
+const AddBook = ({ id, setBookId }) => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [status, setStatus] = useState("Available");
@@ -41,7 +41,7 @@ const AddBook = () => {
                     dismissible>
                     {message?.msg}
                 </Alert>)}
-                
+
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="my-3" controlId="formBookTitle">
                         <InputGroup>
