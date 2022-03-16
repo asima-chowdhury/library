@@ -23,7 +23,7 @@ class BookDataService {
     };
 
     getBook = (id) => {
-        const bookDoc = doc(id, "books", id);
+        const bookDoc = doc(db, "books", id);
         return getDoc(bookDoc);
     }
 

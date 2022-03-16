@@ -43,7 +43,7 @@ const BookList = ({ getBookId }) => {
                     {
                         books.map((doc, index) => {
                             return (
-                                <tr>
+                                <tr key={index + 1}>
                                     <td>{index + 1}</td>
                                     <td>{doc.title}</td>
                                     <td>{doc.author}</td>

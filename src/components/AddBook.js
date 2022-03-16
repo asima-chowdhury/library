@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Button, ButtonGroup, Form, InputGroup } from 'react-bootstrap';
 import BookDataService from '../services/book.services';
 
@@ -10,6 +10,7 @@ const AddBook = ({ id, setBookId }) => {
     const [message, setMessage] = useState({ error: false, msg: "" });
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         setMessage("");
         if (title === "" || author === "") {
@@ -22,8 +23,14 @@ const AddBook = ({ id, setBookId }) => {
         console.log(newBook);
 
         try {
-            await BookDataService.addBooks(newBook);
-            setMessage({ error: false, msg: "New book added successfully!" });
+            if (id !== undefined && id !== "") {
+                await BookDataService.updateBook(id, newBook);
+                setBookId("");
+                setMessage({ error: false, msg: "Updated book successfully!" });
+            } else {
+                await BookDataService.addBooks(newBook);
+                setMessage({ error: false, msg: "New book added successfully!" });
+            }
         } catch (err) {
             setMessage({ error: true, msg: err.message });
         }
@@ -31,6 +38,28 @@ const AddBook = ({ id, setBookId }) => {
         setTitle("");
         setAuthor("");
     };
+
+    const editHandler = async () => {
+        setMessage("");
+        try {
+            const docSnap = await BookDataService.getBook(id);
+
+            console.log("The record is:", docSnap.data());
+
+            setTitle(docSnap.data().title);
+            setAuthor(docSnap.data().author);
+            setStatus(docSnap.data().status);
+        } catch (err) {
+            setMessage({ error: true, msg: err.message });
+        }
+    };
+
+    useEffect(() => {
+        console.log("The id is here,", id);
+        if (id !== undefined && id !== "") {
+            editHandler();
+        }
+    }, [id]);
 
     return (
         <>
